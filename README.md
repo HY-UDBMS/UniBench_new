@@ -13,4 +13,4 @@ Zhang, Chao, et al. "UniBench: A benchmark for multi-model database management s
 
 ## Running
 
-Please follow the instructions in [Wiki](https://github.com/Rucchao/UniBench_new/wiki) to run the benchmark.
+Please follow the instructions in [wiki](https://github.com/Rucchao/UniBench_new/wiki) to run the benchmark.
