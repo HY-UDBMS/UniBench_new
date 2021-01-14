@@ -10,3 +10,7 @@ Zhang, Chao, Jiaheng Lu. "Holistic Evaluation in Multi-Model Databases Benchmark
 
 Zhang, Chao, et al. "UniBench: A benchmark for multi-model database management systems." TPCTC. Springer, Cham, 2018.
 ```
+
+## Running
+
+Please follow the instructions in Wiki to run the benchmark.
