@@ -12,6 +12,7 @@ Zhang, Chao, et al. "UniBench: A benchmark for multi-model database management s
 ```
 
 ## Query Implementations
+Essentially, any MMDB can be implemented in UniBench either with or without data transformation. Since there is no query language standard, one can ﬁnd all the query deﬁnitions in ArangoDB AQL, OrientDB SQL and AgensGraph SQL/Cypher, Spark SQL (partially) as follows:
 
 | [Query](https://github.com/HY-UDBMS/UniBench/blob/master/Unibench/src/MMDB.java)  | 01 | 02 | 03 | 04 | 05 | 06 | 07| 08 | 09| 10 |
 | -------------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
