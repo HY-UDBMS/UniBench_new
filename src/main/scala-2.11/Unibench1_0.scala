@@ -8,7 +8,8 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions.{desc, rank, _}
-
+import java.nio.file.Files
+import java.nio.file.Paths
 /**
  * Unibench2.0 with Relational, Graph, XML, Key-value and RDF data
  */
@@ -241,7 +242,7 @@ object Unibench1_0 {
 
     spark.conf.set("feedback_factor", params.getProperty("feedback_factor", "1"))
     spark.conf.set("rdf_factor", params.getProperty("rdf_factor", "0"))
-    spark.conf.set("interest_table", "Unibench/Graph_SocialNetwork/PersonHasInterests/part-*.csv")
+    spark.conf.set("interest_table", "Unibench/Graph_SocialNetwork/PersonHasInterest/part-*.csv")
     spark.conf.set("Person_knows_Person", "Unibench/Graph_SocialNetwork/part-*.csv")
     spark.conf.set("BrandByProduct", "src/main/resources/SportsBrandByProduct.csv")
     spark.conf.set("order", "Unibench/JSON_Order")
@@ -251,23 +252,41 @@ object Unibench1_0 {
     spark.conf.set("rating", "Unibench/KeyValue_Rating")
     spark.conf.set("rdf", "Unibench/RDF_Product")
     spark.conf.set("RFM", "RFM")
-
+/*
     SocialNetwork.graphGen(spark)
 
     Purchase(spark)
 
     // Product
     Product.WriteToDisk(spark, Product.CreateProduct(spark))
+
     // Vendor
     Vendor.GenerateVendor(spark)
+
+    // Tag
+    Utility.Copy("src/main/resources/","Unibench/Graph_SocialNetwork/Tag/tag.csv")
+
+
+    // Rename the generated files
+    Utility.reName("Unibench/CSV_Customer/","Unibench/CSV_Customer/person.csv")
+    Utility.reName("Unibench/KeyValue_Rating/","Unibench/KeyValue_Rating/rating.csv")
+    Utility.reName("Unibench/CSV_Vendor/","Unibench/CSV_Vendor/vendor.csv")
+    Utility.reName("Unibench/CSV_Product/","Unibench/CSV_Product/product.csv")
+    Utility.reName("Unibench/JSON_Order/","Unibench/JSON_Order/order.json")
+    Utility.reName("Unibench/JSON_Order/","Unibench/XML_Invoice/invoice.xml")
+    Utility.reName("./Unibench/Graph_SocialNetwork/Post/","Unibench/Graph_SocialNetwork/Post/post.csv")
+    Utility.reName("./Unibench/Graph_SocialNetwork/PersonKnowsPerson/","./Unibench/Graph_SocialNetwork/PersonKnowsPerson/person_knows_person.csv")
+    Utility.reName("./Unibench/Graph_SocialNetwork/PersonHasPost/","./Unibench/Graph_SocialNetwork/PersonHasPost/person_has_post.csv")
+    Utility.reName("./Unibench/Graph_SocialNetwork/PostHasTag/","./Unibench/Graph_SocialNetwork/PostHasTag/post_has_tag.csv")
+    Utility.reName("./Unibench/Graph_SocialNetwork/PersonHasInterest/","./Unibench/Graph_SocialNetwork/PersonHasInterest/person_has_interest.csv")
 
     //Propagation_Purchase(spark)
 
     //Train_model(spark)
 
     //Re_Purchase(spark)
-
-    //RDFSimplified.Create(spark)
+*/
+    RDFSimplified.Create(spark)
 
     /* Stop the sparkSession */
     spark.stop()

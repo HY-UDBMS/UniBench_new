@@ -35,7 +35,7 @@ object SocialNetwork {
     val lastName = spark.sparkContext.textFile("src/main/resources/surnameByCountry").map(_.split(",")).map(u => (u(1), u(2))).toDF("Country","lastName").sample(true,scale_factor)
     val nameByCountry=firstName.join(lastName,"Country").orderBy(rand()).limit(person_size).withColumn("personId",monotonically_increasing_id())
     val PersonwithGenderandBirthDate=nameByCountry.withColumn("gender",when(rand()>0.5,lit("Female")).otherwise("Male")).withColumn("birthday",randBirthDateUdf())
-    PersonwithGenderandBirthDate.repartition(1).write.option("delimiter", "|").csv("Unibench/Graph_SocialNetwork/Persons")
+    PersonwithGenderandBirthDate.repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/CSV_Customer/")
 
     // Gen 2: person- interest - tag
     // Country
@@ -49,14 +49,13 @@ object SocialNetwork {
 
     // Person and Tag, (total count 52433316)
     val Person_hasInterest_Tag=PersonswithCountryId.join(BrandByCountry,"countryId").join(ItemsByBrand,"brandId").orderBy(rand()).limit(interest_size)
-    Person_hasInterest_Tag.select("personId","ItemId").repartition(1).write.option("delimiter", "|").csv("Unibench/Graph_SocialNetwork/PersonHasInterests")
-
+    Person_hasInterest_Tag.select("personId","ItemId").repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonHasInterest")
 
     // Gen 3: person- knows -person (total count 40352744)
     val knowsgraph = PersonwithGenderandBirthDate.join(PersonwithGenderandBirthDate,"Country")
       .toDF("1","2","3","personIdsrc","5","6","7","8","personIddst","10","11")
       .select("personIdsrc","personIddst").orderBy(rand()).limit((knows_size)).dropDuplicates()
-    knowsgraph.repartition(1).write.option("delimiter", "|").csv("Unibench/Graph_SocialNetwork/PersonKnowsPersons")
+    knowsgraph.repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonKnowsPerson")
 
     // Divide the taglist to sublists
     def split[Any](xs: List[Any], n: Int): List[List[Any]] = {
@@ -78,7 +77,7 @@ object SocialNetwork {
                     .withColumn("postId", monotonically_increasing_id())
                    //.withColumn("TagList", explode(col("PostList"))).drop(col("PostList"))
 
-    Person_tag.select("personId","postId").repartition(1).write.option("delimiter", "|").csv("Unibench/Graph_SocialNetwork/PersonHasPost")
+    Person_tag.select("personId","postId").repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonHasPost")
 
     // Gen 5: post - has - tag
     val Post_tag=Person_tag.withColumn("productId", explode(col("PostList"))).drop(col("PostList"))
@@ -88,7 +87,10 @@ object SocialNetwork {
     val ProductDF = CreateProduct(spark)
     Post_tag.join(ProductDF,"productId").groupBy("postId").agg(collect_list("title"))
       .toDF("postId","Description").withColumn("Description",col("Description").cast("string")).withColumn("Date",randPostDateUdf())
-      .repartition(1).write.option("delimiter", "|").csv("Unibench/Graph_SocialNetwork/Post")
+      .repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/Post")
+
+    // Gen 7: tag
+    Utility.Copy("src/main/resources/","Unibench/Graph_SocialNetwork/Tag/tag.csv")
   }
 }
 /*

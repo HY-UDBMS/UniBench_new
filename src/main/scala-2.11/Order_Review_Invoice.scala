@@ -90,7 +90,7 @@ object Order_Review_Invoice {
     //val feedbackwithoutdupli=feedback.dropDuplicates(Array("productId","feedback"))
 
     val extract = udf(GetRating)
-    feedback.withColumn("rating", extract(col("feedback"))).select("PersonId", "productId", "rating").repartition(1).write.option("delimiter", "|").csv(path_rating)
+    feedback.withColumn("rating", extract(col("feedback"))).select("PersonId", "productId", "rating").repartition(1).write.option("delimiter", "|").option("header", "true").csv(path_rating)
 
     /*
     //Key-value for feedback

@@ -7,8 +7,8 @@ import org.apache.spark.sql.types.{DataTypes, StructField, StructType}
 object Product {
   def WriteToDisk(spark: SparkSession, DF: DataFrame) {
     val ProductDF = CreateProduct(spark)
-    ProductDF.select("asin", "title", "price", "imgUrl", "productId", "brand")
-      .repartition(1).write.option("header", "true").csv("Unibench/CSV_product")
+    ProductDF.select("asin", "title", "price", "imgUrl", "productId", "brand").dropDuplicates()
+      .repartition(1).write.option("header", "true").csv("Unibench/CSV_Product")
   }
 
   // Define the schema of product('asin','title','categories','price','imgUrl','description')
