@@ -13,7 +13,7 @@ import java.nio.file.Paths
 /**
  * Unibench2.0 with Relational, Graph, XML, Key-value and RDF data
  */
-object Unibench1_0 {
+object Unibench2_0 {
 
   def Propagation_Purchase(spark: SparkSession) = {
     // Configure the path
@@ -52,7 +52,7 @@ object Unibench1_0 {
     val broadcastMap = spark.sparkContext.broadcast(IndexedRDDforKnows.collectAsMap())
     val broadcastRating = spark.sparkContext.broadcast(ratingMatrix.collect())
 
-    var output: RDD[Unibench1_0.Ratings] = spark.sparkContext.emptyRDD
+    var output: RDD[Unibench2_0.Ratings] = spark.sparkContext.emptyRDD
 
     val targetuser = majority.filter(row => row != header)
       .map(_.split("\\|"))
@@ -266,12 +266,14 @@ object Unibench1_0 {
     // Tag
     Utility.Copy("src/main/resources/","Unibench/Graph_SocialNetwork/Tag/tag.csv")
 
+    RDFSimplified.Create(spark)
 
     // Rename the generated files
     Utility.reName("Unibench/CSV_Customer/","Unibench/CSV_Customer/person.csv")
     Utility.reName("Unibench/KeyValue_Rating/","Unibench/KeyValue_Rating/rating.csv")
     Utility.reName("Unibench/CSV_Vendor/","Unibench/CSV_Vendor/vendor.csv")
     Utility.reName("Unibench/CSV_Product/","Unibench/CSV_Product/product.csv")
+    Utility.reName("Unibench/RDF_Product/","Unibench/RDF_Product/product.ttl")
     Utility.reName("Unibench/JSON_Order/","Unibench/JSON_Order/order.json")
     Utility.reName("Unibench/XML_Invoice/","Unibench/XML_Invoice/invoice.xml")
     Utility.reName("./Unibench/Graph_SocialNetwork/Post/","Unibench/Graph_SocialNetwork/Post/post.csv")
@@ -285,8 +287,6 @@ object Unibench1_0 {
     //Train_model(spark)
 
     //Re_Purchase(spark)
-
-    RDFSimplified.Create(spark)
 
     /* Stop the sparkSession */
     spark.stop()

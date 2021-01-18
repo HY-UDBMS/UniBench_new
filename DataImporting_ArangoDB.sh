@@ -3,7 +3,7 @@
 
 ## Relational
 
-arangoimp --file "./Unibench/CSV_Customer/person.csv" --type csv --translate "id=_key" --separator "|" --collection "Customer" --server.username root  --server.password "123"  --create-collection true --threads 8
+arangoimp --file "./Unibench/CSV_Customer/person.csv" --type csv --translate "personId=_key" --separator "|" --collection "Customer" --server.username root  --server.password "123"  --create-collection true --threads 8
 
 arangoimp --file "./Unibench/KeyValue_Rating/rating.csv" --type csv  --separator "|" --collection "Feedback" --server.username root  --server.password "123"    --create-collection true --threads 8
 
@@ -19,7 +19,7 @@ arangoimp --file "./Unibench/JSON_Order/order.json" --type jsonl --translate "id
 
 ## Graph
 
-arangoimp --file "./Unibench/Graph_SocialNetwork/Post/post.csv" --type csv --separator "|" --translate "id=_key" --collection "Post"  --server.username root  --server.password "123" --create-collection true  --threads 8
+arangoimp --file "./Unibench/Graph_SocialNetwork/Post/post.csv" --type csv --separator "|" --translate "postId=_key" --collection "Post"  --server.username root  --server.password "123" --create-collection true  --threads 8
 
 arangoimp --file "./Unibench/Graph_SocialNetwork/Tag/tag.csv" --type csv --separator "|" --translate "id=_key" --collection "Tag"  --server.username root  --server.password "123" --create-collection true  --threads 8
 

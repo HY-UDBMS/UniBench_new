@@ -81,7 +81,7 @@ object SocialNetwork {
 
     // Gen 5: post - has - tag
     val Post_tag=Person_tag.withColumn("productId", explode(col("PostList"))).drop(col("PostList"))
-    Post_tag.select("postId","productId").toDF("postId","tagId").repartition(1).write.option("delimiter", "|").csv("Unibench/Graph_SocialNetwork/PostHasTag")
+    Post_tag.select("postId","productId").toDF("postId","tagId").repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PostHasTag")
 
     // Gen 6: post (total count 184649)
     val ProductDF = CreateProduct(spark)
