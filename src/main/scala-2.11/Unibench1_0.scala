@@ -252,7 +252,7 @@ object Unibench1_0 {
     spark.conf.set("rating", "Unibench/KeyValue_Rating")
     spark.conf.set("rdf", "Unibench/RDF_Product")
     spark.conf.set("RFM", "RFM")
-/*
+
     SocialNetwork.graphGen(spark)
 
     Purchase(spark)
@@ -273,7 +273,7 @@ object Unibench1_0 {
     Utility.reName("Unibench/CSV_Vendor/","Unibench/CSV_Vendor/vendor.csv")
     Utility.reName("Unibench/CSV_Product/","Unibench/CSV_Product/product.csv")
     Utility.reName("Unibench/JSON_Order/","Unibench/JSON_Order/order.json")
-    Utility.reName("Unibench/JSON_Order/","Unibench/XML_Invoice/invoice.xml")
+    Utility.reName("Unibench/XML_Invoice/","Unibench/XML_Invoice/invoice.xml")
     Utility.reName("./Unibench/Graph_SocialNetwork/Post/","Unibench/Graph_SocialNetwork/Post/post.csv")
     Utility.reName("./Unibench/Graph_SocialNetwork/PersonKnowsPerson/","./Unibench/Graph_SocialNetwork/PersonKnowsPerson/person_knows_person.csv")
     Utility.reName("./Unibench/Graph_SocialNetwork/PersonHasPost/","./Unibench/Graph_SocialNetwork/PersonHasPost/person_has_post.csv")
@@ -285,7 +285,7 @@ object Unibench1_0 {
     //Train_model(spark)
 
     //Re_Purchase(spark)
-*/
+
     RDFSimplified.Create(spark)
 
     /* Stop the sparkSession */
