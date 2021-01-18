@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sbt: net.java.dev:stax-utils:snapshot-20100402:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/raw.github.com/gephi/gephi/mvn-thirdparty-repo/net/java/dev/stax-utils/snapshot-20100402/stax-utils-snapshot-20100402.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

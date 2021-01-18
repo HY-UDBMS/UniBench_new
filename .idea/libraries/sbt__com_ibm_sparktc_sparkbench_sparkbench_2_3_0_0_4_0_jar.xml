@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sbt: com.ibm.sparktc.sparkbench:sparkbench:2.3.0_0.4.0:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/maven.aksw.org/archiva/repository/internal/com/ibm/sparktc/sparkbench/sparkbench/2.3.0_0.4.0/sparkbench-2.3.0_0.4.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

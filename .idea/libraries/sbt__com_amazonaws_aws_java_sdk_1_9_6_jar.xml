@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sbt: com.amazonaws:aws-java-sdk:1.9.6:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.9.6/aws-java-sdk-1.9.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

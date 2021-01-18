@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sbt: org.netbeans.api:org-netbeans-modules-keyring:RELEASE82:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/http/bits.netbeans.org/nexus/content/groups/netbeans/org/netbeans/api/org-netbeans-modules-keyring/RELEASE82/org-netbeans-modules-keyring-RELEASE82.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/http/bits.netbeans.org/nexus/content/groups/netbeans/org/netbeans/api/org-netbeans-modules-keyring/RELEASE82/org-netbeans-modules-keyring-RELEASE82-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/http/bits.netbeans.org/nexus/content/groups/netbeans/org/netbeans/api/org-netbeans-modules-keyring/RELEASE82/org-netbeans-modules-keyring-RELEASE82-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

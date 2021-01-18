@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: net.sf.extjwnl:extjwnl-data-wn31-map:1.0:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/net/sf/extjwnl/extjwnl-data-wn31-map/1.0/extjwnl-data-wn31-map-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/net/sf/extjwnl/extjwnl-data-wn31-map/1.0/extjwnl-data-wn31-map-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

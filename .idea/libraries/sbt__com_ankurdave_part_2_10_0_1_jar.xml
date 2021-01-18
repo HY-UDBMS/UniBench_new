@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sbt: com.ankurdave:part_2.10:0.1:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/github.com/ankurdave/maven-repo/raw/master/com/ankurdave/part_2.10/0.1/part_2.10-0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/github.com/ankurdave/maven-repo/raw/master/com/ankurdave/part_2.10/0.1/part_2.10-0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/github.com/ankurdave/maven-repo/raw/master/com/ankurdave/part_2.10/0.1/part_2.10-0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
