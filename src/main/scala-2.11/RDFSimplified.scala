@@ -40,9 +40,9 @@ object RDFSimplified {
       .filter(t => !t.getObject.isURI || IsDbpedia(t.getObject.getURI))
 
     // output N-TRIPLES directly
-    collected.repartition(1).saveAsTextFile(spark.conf.get("rdf"))
+    //collected.repartition(1).saveAsTextFile(spark.conf.get("rdf"))
 
-/*
+
     // output JSON
     val nodes = collected
       .getSubjects()
@@ -92,7 +92,6 @@ object RDFSimplified {
 
     json_attributes.repartition(1).saveAsTextFile(spark.conf.get("rdf") + "_nodes")
     json_edges.repartition(1).saveAsTextFile(spark.conf.get("rdf") + "_edges")
-*/
   }
 
   def IsDbpedia(uri: String): Boolean = uri.startsWith("http://dbpedia.org/")

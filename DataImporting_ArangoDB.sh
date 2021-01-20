@@ -5,7 +5,7 @@
 
 arangoimp --file "./Unibench/CSV_Customer/person.csv" --type csv --translate "personId=_key" --separator "|" --collection "Customer" --server.username root  --server.password "123"  --create-collection true --threads 8
 
-arangoimp --file "./Unibench/KeyValue_Rating/rating.csv" --type csv  --separator "|" --collection "Feedback" --server.username root  --server.password "123"    --create-collection true --threads 8
+arangoimp --file "./Unibench/KeyValue_Rating/rating.csv" --type csv  --separator "|" --collection "Feedback" --server.username root  --server.password "123"    --create-collection true --convert false --threads 8
 
 arangoimp --file "./Unibench/CSV_Vendor/vendor.csv" --type csv  --translate "id=_key"  --collection "Vendor" --server.username root  --server.password "123"    --create-collection true --threads 8
 
@@ -14,7 +14,7 @@ arangoimp --file "./Unibench/CSV_Product/product.csv" --type csv --translate "pr
 
 ## JSON
 
-arangoimp --file "./Unibench/JSON_Order/order.json" --type jsonl --translate "id=_key" --collection "Order" --server.username root  --server.password "123"    --create-collection true --threads 8
+arangoimp --file "./Unibench/JSON_Order/order.json" --type jsonl --translate "id=_key" --collection "Order" --server.username root  --server.password "123"    --create-collection true --convert false --threads 8
 
 
 ## Graph

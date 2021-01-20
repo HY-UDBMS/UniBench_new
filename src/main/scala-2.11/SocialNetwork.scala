@@ -1,7 +1,8 @@
 import Product.CreateProduct
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{Row, SparkSession}
 import org.apache.spark.sql.functions._
+import org.apache.spark.sql.types.StructType
 
 import scala.util.Random
 
@@ -51,11 +52,20 @@ object SocialNetwork {
     val Person_hasInterest_Tag=PersonswithCountryId.join(BrandByCountry,"countryId").join(ItemsByBrand,"brandId").orderBy(rand()).limit(interest_size)
     Person_hasInterest_Tag.select("personId","ItemId").repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonHasInterest")
 
+    // TODO: generating friendship based on common interests
+
     // Gen 3: person- knows -person (total count 40352744)
     val knowsgraph = PersonwithGenderandBirthDate.join(PersonwithGenderandBirthDate,"Country")
       .toDF("1","2","3","personIdsrc","5","6","7","8","personIddst","10","11")
-      .select("personIdsrc","personIddst").orderBy(rand()).limit((knows_size)).dropDuplicates()
-    knowsgraph.repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonKnowsPerson")
+      .select("personIdsrc","personIddst").orderBy(rand()).limit((knows_size))
+
+    // Generating friendship randomly (using dataframes)
+    val randomKnowssrc=PersonwithGenderandBirthDate.select("personId").sample(true,(knows_size)/10).toDF("personIdsrc").withColumn("row_id", monotonically_increasing_id())
+    val randomKnowsdst=PersonwithGenderandBirthDate.select("personId").sample(true,(knows_size)/10).toDF("personIddst").withColumn("row_id", monotonically_increasing_id())
+    val randomKnowsgraph=randomKnowssrc.join(randomKnowsdst, Seq("row_id")).drop("row_id").dropDuplicates()
+
+    val personKnowsperson=knowsgraph.union(randomKnowsgraph).dropDuplicates()
+    personKnowsperson.repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonKnowsPerson")
 
     // Divide the taglist to sublists
     def split[Any](xs: List[Any], n: Int): List[List[Any]] = {
@@ -107,4 +117,18 @@ object SocialNetwork {
     //data.where(col("prob")>Random.nextDouble()).groupBy().min("prob").show()
     //
 
-*/
+        /*
+    val randomKnowssrc=PersonwithGenderandBirthDate.select("personId").sample(true,(knows_size)/10).toDF("personIdsrc")
+    val randomKnowsdst=PersonwithGenderandBirthDate.select("personId").sample(true,(knows_size)/10).toDF("personIddst")
+    val schema = StructType(randomKnowssrc.schema.fields ++ randomKnowsdst.schema.fields)
+    val randomKnowsgraph = randomKnowssrc.rdd.zip(randomKnowsdst.rdd).map{
+      case (rowLeft, rowRight) => Row.fromSeq(rowLeft.toSeq ++ rowRight.toSeq)}
+    val randomKnowsgraphDF = spark.createDataFrame(randomKnowsgraph, schema)
+    */
+
+        val schema = StructType(randomKnowssrc.schema.fields ++ randomKnowsdst.schema.fields)
+    val zipIndex1 = randomKnowssrc.rdd.zipWithIndex.map((x) =>(x._2, x._1))
+    val zipIndex2 = randomKnowsdst.rdd.zipWithIndex.map((x) =>(x._2, x._1))
+    val zipped = zipIndex1.join(zipIndex2).map(x => x._2)
+    val randomKnowsgraphDF = spark.createDataFrame(zipped.values, schema)
+ */

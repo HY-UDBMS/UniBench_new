@@ -126,7 +126,7 @@ object Order_Review_Invoice {
       .withColumn("Orderline", explode(col("OrderwithSchema"))).drop(col("OrderwithSchema"))
       .withColumn("OrderId", orderid())
       .withColumn("OrderDate", randDateUdf()).drop("Orders")
-      .withColumn("PersonId", $"PersonId".cast(LongType))
+      //.withColumn("PersonId", $"PersonId".cast(LongType))
 
     flattened.createOrReplaceTempView("Orders")
     spark.sqlContext.udf.register("computeTotalamount", computeTotalamount(_: Seq[Double]))

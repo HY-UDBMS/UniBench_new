@@ -17,6 +17,6 @@ object Vendor {
     // Table for vendor
     val VendorCatalog = "src/main/resources/PopularSportsBrandByCountry.csv"
     val VendorDF = spark.read.option("header", "false").option("delimiter", ",").option("mode", "DROPMALFORMED").schema(schema_vendor).csv(VendorCatalog)
-    VendorDF.select("id", "name", "country", "cdf", "industry").repartition(1).write.option("header", "true").csv("Unibench/CSV_Vendor")
+    VendorDF.select("id", "name", "country", "industry").repartition(1).write.option("header", "true").csv("Unibench/CSV_Vendor")
   }
 }

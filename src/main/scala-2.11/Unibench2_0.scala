@@ -254,7 +254,7 @@ object Unibench2_0 {
     spark.conf.set("RFM", "RFM")
 
     SocialNetwork.graphGen(spark)
-
+/*
     Purchase(spark)
 
     // Product
@@ -281,7 +281,7 @@ object Unibench2_0 {
     Utility.reName("./Unibench/Graph_SocialNetwork/PersonHasPost/","./Unibench/Graph_SocialNetwork/PersonHasPost/person_has_post.csv")
     Utility.reName("./Unibench/Graph_SocialNetwork/PostHasTag/","./Unibench/Graph_SocialNetwork/PostHasTag/post_has_tag.csv")
     Utility.reName("./Unibench/Graph_SocialNetwork/PersonHasInterest/","./Unibench/Graph_SocialNetwork/PersonHasInterest/person_has_interest.csv")
-
+*/
     //Propagation_Purchase(spark)
 
     //Train_model(spark)

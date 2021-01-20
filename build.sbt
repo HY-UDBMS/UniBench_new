@@ -55,3 +55,9 @@ libraryDependencies ++= Seq(
   "net.sansa-stack" %% "sansa-query-spark" % "0.6.0" excludeAll(excludeJpountz),
   "net.sansa-stack" %% "sansa-ml-spark" % "0.6.0" excludeAll(excludeJpountz)
 )
+
+libraryDependencies ++= Seq(
+  "com.arangodb" % "arangodb-java-driver" % "6.7.4",
+  "com.orientechnologies" % "orientdb-jdbc" % "3.1.5",
+  "net.bitnine" % "agensgraph-jdbc" % "1.4.2",
+)

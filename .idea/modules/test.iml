@@ -64,6 +64,8 @@
     <orderEntry type="library" name="sbt: com.amazonaws:aws-java-sdk-swf-libraries:1.9.6:jar" level="project" />
     <orderEntry type="library" name="sbt: com.amazonaws:aws-java-sdk:1.9.6:jar" level="project" />
     <orderEntry type="library" name="sbt: com.ankurdave:part_2.10:0.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.arangodb:arangodb-java-driver:6.7.4:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.arangodb:velocypack:2.4.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.carrotsearch:hppc:0.7.2:jar" level="project" />
     <orderEntry type="library" name="sbt: com.cedarsoftware:java-util:1.9.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.cedarsoftware:json-io:2.5.1:jar" level="project" />
@@ -115,6 +117,13 @@
     <orderEntry type="library" name="sbt: com.github.haifengl:smile-graph:1.5.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.github.haifengl:smile-math:1.5.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.github.haifengl:smile-netlib:1.5.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.github.jnr:jffi:1.2.19:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.github.jnr:jffi:1.2.19:native:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.github.jnr:jnr-a64asm:1.0.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.github.jnr:jnr-constants:0.9.12:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.github.jnr:jnr-ffi:2.1.10:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.github.jnr:jnr-posix:3.0.50:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.github.jnr:jnr-x86asm:1.0.2:jar" level="project" />
     <orderEntry type="library" name="sbt: com.github.jsonld-java:jsonld-java:0.12.3:jar" level="project" />
     <orderEntry type="library" name="sbt: com.github.jsqlparser:jsqlparser:1.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.github.luben:zstd-jni:1.3.2-2:jar" level="project" />
@@ -134,10 +143,11 @@
     <orderEntry type="library" name="sbt: com.google.inject:guice:4.1.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.j2objc:j2objc-annotations:1.3:jar" level="project" />
     <orderEntry type="library" name="sbt: com.google.protobuf:protobuf-java:3.5.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.3.2:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2:jar" level="project" />
     <orderEntry type="library" name="sbt: com.googlecode.javaewah:JavaEWAH:0.3.2:jar" level="project" />
     <orderEntry type="library" name="sbt: com.h2database:h2:1.4.196:jar" level="project" />
     <orderEntry type="library" name="sbt: com.holdenkarau:spark-testing-base_2.11:2.4.3_0.12.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.ibm.icu:icu4j:65.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.ibm.sparktc.sparkbench:sparkbench:2.3.0_0.4.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.intel.analytics.bigdl.bigquant:bigquant-java-mac:0.3.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.intel.analytics.bigdl.bigquant:bigquant-java-win64:0.3.0:jar" level="project" />
@@ -159,6 +169,11 @@
     <orderEntry type="library" name="sbt: com.nimbusds:nimbus-jose-jwt:4.41.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.ning:compress-lzf:1.0.3:jar" level="project" />
     <orderEntry type="library" name="sbt: com.nurkiewicz.asyncretry:asyncretry-jdk7:0.0.6:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.orientechnologies:orientdb-client:3.1.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.orientechnologies:orientdb-core:3.1.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.orientechnologies:orientdb-jdbc:3.1.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.orientechnologies:orientdb-server:3.1.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.orientechnologies:orientdb-tools:3.1.5:jar" level="project" />
     <orderEntry type="library" name="sbt: com.squareup.okhttp:okhttp:2.4.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.squareup.okio:okio:1.4.0:jar" level="project" />
     <orderEntry type="library" name="sbt: com.squareup:javapoet:1.8.0:jar" level="project" />
@@ -166,7 +181,8 @@
     <orderEntry type="library" name="sbt: com.sun.jersey.contribs:jersey-guice:1.9:jar" level="project" />
     <orderEntry type="library" name="sbt: com.sun.jersey:jersey-client:1.9:jar" level="project" />
     <orderEntry type="library" name="sbt: com.sun.jersey:jersey-json:1.9:jar" level="project" />
-    <orderEntry type="library" name="sbt: com.sun.xml.bind:jaxb-impl:2.2.3-1:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.sun.xml.bind:jaxb-core:2.3.0.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.sun.xml.bind:jaxb-impl:2.3.0.1:jar" level="project" />
     <orderEntry type="library" name="sbt: com.sun.xml.fastinfoset:FastInfoset:1.2.15:jar" level="project" />
     <orderEntry type="library" name="sbt: com.thoughtworks.paranamer:paranamer:2.8:jar" level="project" />
     <orderEntry type="library" name="sbt: com.thoughtworks.xstream:xstream:1.3.1:jar" level="project" />
@@ -280,6 +296,7 @@
     <orderEntry type="library" name="sbt: log4j:apache-log4j-extras:1.2.17:jar" level="project" />
     <orderEntry type="library" name="sbt: log4j:log4j:1.2.17:jar" level="project" />
     <orderEntry type="library" name="sbt: mysql:mysql-connector-java:6.0.6:jar" level="project" />
+    <orderEntry type="library" name="sbt: net.bitnine:agensgraph-jdbc:1.4.2:jar" level="project" />
     <orderEntry type="library" name="sbt: net.hydromatic:aggdesigner-algorithm:6.0:jar" level="project" />
     <orderEntry type="library" name="sbt: net.java.dev.jets3t:jets3t:0.9.0:jar" level="project" />
     <orderEntry type="library" name="sbt: net.java.dev:stax-utils:snapshot-20100402:jar" level="project" />
@@ -703,10 +720,11 @@
     <orderEntry type="library" name="sbt: org.objenesis:objenesis:2.5.1:jar" level="project" />
     <orderEntry type="library" name="sbt: org.osgi:org.osgi.core:5.0.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.ow2.asm:asm-all:5.0.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.ow2.asm:asm-analysis:7.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.ow2.asm:asm-commons:7.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.ow2.asm:asm-tree:7.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.ow2.asm:asm:7.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.ow2.asm:asm-analysis:7.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.ow2.asm:asm-commons:7.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.ow2.asm:asm-tree:7.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.ow2.asm:asm-util:7.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.ow2.asm:asm:7.1:jar" level="project" />
     <orderEntry type="library" name="sbt: org.postgresql:postgresql:42.1.4.jre7:jar" level="project" />
     <orderEntry type="library" name="sbt: org.reactivestreams:reactive-streams:1.0.2:jar" level="project" />
     <orderEntry type="library" name="sbt: org.roaringbitmap:RoaringBitmap:0.7.45:jar" level="project" />
