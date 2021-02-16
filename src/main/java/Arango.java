@@ -15,7 +15,7 @@ public class Arango extends MMDB {
 	
 		Object Connection(){
 			ArangoDB arangoDB = new ArangoDB.Builder()
-					.host("localhost", 8529).user("root").password("")
+					.host("localhost", 8529).user("root").password("123")
 					.build();
 			
 			return (Object)arangoDB;
@@ -93,7 +93,7 @@ public class Arango extends MMDB {
 	    } 
 	    
 	    void Q5(String PersonId, String brand) {
-		    String AQ5="Let Plist=(For friend in 1..3 Outbound @id KnowsGraph "
+		    String AQ5="Let Plist=(For friend in 1..1 Outbound @id KnowsGraph "
 		    		+ "For order in Order Filter order.PersonId==friend._key and @brand in order.Orderline[*].brand return distinct(friend)) "
 		    		+ "For person in Plist For post in Outbound person._id PersonHasPost "
 		    		+ "For tag in Outbound post PostHasTag Return {person:person,tags:tag}";

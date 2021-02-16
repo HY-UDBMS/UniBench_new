@@ -3,17 +3,29 @@ import org.apache.spark.SparkConf
 import org.apache.spark.sql.{Row, SparkSession}
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types.StructType
+import java.io.FileInputStream
 
 import scala.util.Random
+import scala.xml.{Node, XML}
 
 object SocialNetwork {
+  def attributeValueEquals(value: String)(node: Node) = {
+    node.attributes.exists(_.value.text == value)
+  }
+
   def graphGen(spark: SparkSession): Unit = {
-    val BirthDateBound= 1970
-    val PostDateBound= 2010
-    val random1 = new Random(BirthDateBound)
-    val random2 = new Random(PostDateBound)
-    val randBirthDateUdf = udf(() => (BirthDateBound + random1.nextInt(30)) + "-" + (1 + random1.nextInt(11)).toString.reverse.padTo(2, "0").reverse.mkString + "-" + (1 + random1.nextInt(29)).toString.reverse.padTo(2, "0").reverse.mkString)
-    val randPostDateUdf = udf(() => (PostDateBound + random2.nextInt(30)) + "-" + (1 + random2.nextInt(11)).toString.reverse.padTo(2, "0").reverse.mkString + "-" + (1 + random2.nextInt(29)).toString.reverse.padTo(2, "0").reverse.mkString)
+    val scale_factor = spark.conf.get("scale_factor").toString
+    val xml = XML.loadFile("scale_factors.xml")
+    val params = xml \\ "_" filter attributeValueEquals(scale_factor)
+    val person_size=(params \ "numPersons" text).toInt
+    val interest_size=(params \ "InterestSize" text).toInt
+    val knows_size=(params \ "FriendSize" text).toInt
+    val BirthStartDate= (params \ "BirthStartDate" text).toInt
+    val PostStartDate= (params \ "PostStartDate" text).toInt
+    val random1 = new Random(BirthStartDate)
+    val random2 = new Random(PostStartDate)
+    val randBirthDateUdf = udf(() => (BirthStartDate + random1.nextInt(30)) + "-" + (1 + random1.nextInt(11)).toString.reverse.padTo(2, "0").reverse.mkString + "-" + (1 + random1.nextInt(29)).toString.reverse.padTo(2, "0").reverse.mkString)
+    val randPostDateUdf = udf(() => (PostStartDate + random2.nextInt(10)) + "-" + (1 + random2.nextInt(11)).toString.reverse.padTo(2, "0").reverse.mkString + "-" + (1 + random2.nextInt(29)).toString.reverse.padTo(2, "0").reverse.mkString)
     val getRandomElement =udf {()=>
       val gender=Seq("Female","Male")
       gender(random1.nextInt(gender.length))
@@ -28,12 +40,9 @@ object SocialNetwork {
     }
 
     // Gen 1: person: a join between firstName and LastName scale factor 1: 11000
-    val scale_factor= 1
-    val person_size=11000
-    val interest_size=693918
-    val knows_size=187811
-    val firstName = spark.sparkContext.textFile("src/main/resources/givennameByCountry").map(_.split("  ")).map(u => (u(0), u(1))).toDF("Country", "firstName").sample(true,scale_factor)
-    val lastName = spark.sparkContext.textFile("src/main/resources/surnameByCountry").map(_.split(",")).map(u => (u(1), u(2))).toDF("Country","lastName").sample(true,scale_factor)
+    //val scale_factor= 1
+    val firstName = spark.sparkContext.textFile("src/main/resources/givennameByCountry").map(_.split("  ")).map(u => (u(0), u(1))).toDF("Country", "firstName")
+    val lastName = spark.sparkContext.textFile("src/main/resources/surnameByCountry").map(_.split(",")).map(u => (u(1), u(2))).toDF("Country","lastName")
     val nameByCountry=firstName.join(lastName,"Country").orderBy(rand()).limit(person_size).withColumn("personId",monotonically_increasing_id())
     val PersonwithGenderandBirthDate=nameByCountry.withColumn("gender",when(rand()>0.5,lit("Female")).otherwise("Male")).withColumn("birthday",randBirthDateUdf())
     PersonwithGenderandBirthDate.repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/CSV_Customer/")
@@ -49,23 +58,28 @@ object SocialNetwork {
     val ItemsByBrand = spark.sparkContext.textFile("src/main/resources/tagMatrix.txt").map(_.split(" ")).map(u => (u(0),u(1))).toDF("brandId","ItemId")
 
     // Person and Tag, (total count 52433316)
-    val Person_hasInterest_Tag=PersonswithCountryId.join(BrandByCountry,"countryId").join(ItemsByBrand,"brandId").orderBy(rand()).limit(interest_size)
-    Person_hasInterest_Tag.select("personId","ItemId").repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonHasInterest")
+    val Person_hasInterest_Tag=PersonswithCountryId.join(BrandByCountry,"countryId").join(ItemsByBrand,"brandId").select("personId","ItemId")
+        .orderBy(rand()).limit(interest_size*8/10)
+      //.repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonHasInterest")
+    // Generating random interests
+    val randomPersonId=PersonwithGenderandBirthDate.select("personId")
+    val randomItemId=ItemsByBrand.select("ItemId")
+    val randomInterestgraph=randomPersonId.crossJoin(randomItemId).orderBy(rand()).limit(interest_size*2/10)
+    //randomInterestgraph.repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonHasInterest_Random")
 
-    // TODO: generating friendship based on common interests
+    val InterestGraph=Person_hasInterest_Tag.union(randomInterestgraph)
+    InterestGraph.repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonHasInterest")
 
     // Gen 3: person- knows -person (total count 40352744)
     val knowsgraph = PersonwithGenderandBirthDate.join(PersonwithGenderandBirthDate,"Country")
       .toDF("1","2","3","personIdsrc","5","6","7","8","personIddst","10","11")
-      .select("personIdsrc","personIddst").orderBy(rand()).limit((knows_size))
+    knowsgraph.select("personIdsrc","personIddst").orderBy(rand()).limit(knows_size*8/10).repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonKnowsPerson")
 
-    // Generating friendship randomly (using dataframes)
-    val randomKnowssrc=PersonwithGenderandBirthDate.select("personId").sample(true,(knows_size)/10).toDF("personIdsrc").withColumn("row_id", monotonically_increasing_id())
-    val randomKnowsdst=PersonwithGenderandBirthDate.select("personId").sample(true,(knows_size)/10).toDF("personIddst").withColumn("row_id", monotonically_increasing_id())
-    val randomKnowsgraph=randomKnowssrc.join(randomKnowsdst, Seq("row_id")).drop("row_id").dropDuplicates()
-
-    val personKnowsperson=knowsgraph.union(randomKnowsgraph).dropDuplicates()
-    personKnowsperson.repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonKnowsPerson")
+    // Generating friendship randomly
+    val randomKnowssrc=PersonwithGenderandBirthDate.select("personId").toDF("personIdsrc")
+    val randomKnowsdst=PersonwithGenderandBirthDate.select("personId").toDF("personIddst")
+    val randomKnowsgraph=randomKnowssrc.crossJoin(randomKnowsdst)
+        .orderBy(rand()).limit(knows_size*2/10).repartition(1).write.option("delimiter", "|").option("header","true").csv("Unibench/Graph_SocialNetwork/PersonKnowsPerson_Random")
 
     // Divide the taglist to sublists
     def split[Any](xs: List[Any], n: Int): List[List[Any]] = {
@@ -80,7 +94,7 @@ object SocialNetwork {
 
     // Gen 4: person - has - post
     // person - hasinterest - tag
-    val Person_tag = Person_hasInterest_Tag.select("personId","ItemId").toDF("personId","tagId")
+    val Person_tag = InterestGraph.select("personId","ItemId").toDF("personId","tagId")
                    .groupBy($"personId").agg(collect_list(col("tagId"))).toDF("personId","tagList")
                    .withColumn("subtagList", subList(col("tagList"))).drop(col("tagList"))
                    .withColumn("PostList", explode(col("subtagList"))).drop(col("subtagList"))

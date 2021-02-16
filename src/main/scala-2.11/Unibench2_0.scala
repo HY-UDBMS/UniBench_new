@@ -12,6 +12,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 /**
  * Unibench2.0 with Relational, Graph, XML, Key-value and RDF data
+ * Created by Chao in 11.2020
  */
 object Unibench2_0 {
 
@@ -231,6 +232,10 @@ object Unibench2_0 {
       .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer") //required by SANSA
       .config("spark.io.compression.codec", "snappy")
       .getOrCreate()
+    spark.conf.set("spark.executor.memory","8g")
+    spark.conf.set("spark.executor.cores", "3")
+    spark.conf.set("spark.cores.max", "3")
+    spark.conf.set("spark.driver.memory","8g")
 
     { // get rid of DEBUG logs
       import ch.qos.logback.classic.{Level, Logger}
@@ -239,7 +244,7 @@ object Unibench2_0 {
       val rootLogger = LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME).asInstanceOf[Logger]
       rootLogger.setLevel(Level.INFO)
     }
-
+    spark.conf.set("scale_factor", params.getProperty("scale_factor", "1"))
     spark.conf.set("feedback_factor", params.getProperty("feedback_factor", "1"))
     spark.conf.set("rdf_factor", params.getProperty("rdf_factor", "0"))
     spark.conf.set("interest_table", "Unibench/Graph_SocialNetwork/PersonHasInterest/part-*.csv")
@@ -254,7 +259,7 @@ object Unibench2_0 {
     spark.conf.set("RFM", "RFM")
 
     SocialNetwork.graphGen(spark)
-/*
+
     Purchase(spark)
 
     // Product
@@ -266,22 +271,26 @@ object Unibench2_0 {
     // Tag
     Utility.Copy("src/main/resources/","Unibench/Graph_SocialNetwork/Tag/tag.csv")
 
-    RDFSimplified.Create(spark)
+    //RDFSimplified.Create(spark)
 
     // Rename the generated files
     Utility.reName("Unibench/CSV_Customer/","Unibench/CSV_Customer/person.csv")
-    Utility.reName("Unibench/KeyValue_Rating/","Unibench/KeyValue_Rating/rating.csv")
     Utility.reName("Unibench/CSV_Vendor/","Unibench/CSV_Vendor/vendor.csv")
     Utility.reName("Unibench/CSV_Product/","Unibench/CSV_Product/product.csv")
-    Utility.reName("Unibench/RDF_Product/","Unibench/RDF_Product/product.ttl")
+
+    Utility.reName("Unibench/KeyValue_Rating/","Unibench/KeyValue_Rating/rating.csv")
     Utility.reName("Unibench/JSON_Order/","Unibench/JSON_Order/order.json")
     Utility.reName("Unibench/XML_Invoice/","Unibench/XML_Invoice/invoice.xml")
+
     Utility.reName("./Unibench/Graph_SocialNetwork/Post/","Unibench/Graph_SocialNetwork/Post/post.csv")
     Utility.reName("./Unibench/Graph_SocialNetwork/PersonKnowsPerson/","./Unibench/Graph_SocialNetwork/PersonKnowsPerson/person_knows_person.csv")
+    Utility.reName("./Unibench/Graph_SocialNetwork/PersonKnowsPerson_Random/","./Unibench/Graph_SocialNetwork/PersonKnowsPerson_Random/person_knows_person.csv")
     Utility.reName("./Unibench/Graph_SocialNetwork/PersonHasPost/","./Unibench/Graph_SocialNetwork/PersonHasPost/person_has_post.csv")
     Utility.reName("./Unibench/Graph_SocialNetwork/PostHasTag/","./Unibench/Graph_SocialNetwork/PostHasTag/post_has_tag.csv")
     Utility.reName("./Unibench/Graph_SocialNetwork/PersonHasInterest/","./Unibench/Graph_SocialNetwork/PersonHasInterest/person_has_interest.csv")
-*/
+    //Utility.reName("Unibench/RDF_Product/","Unibench/RDF_Product/product.ttl")
+    Utility.reName("./Unibench/RDF_Product_edges/","./Unibench/RDF_Product_edges/RDF_product_edges.json")
+    Utility.reName("./Unibench/RDF_Product_nodes/","./Unibench/RDF_Product_nodes/RDF_product_nodes.json")
     //Propagation_Purchase(spark)
 
     //Train_model(spark)

@@ -1,8 +1,6 @@
 import java.io.File
 import java.nio.file.{Files, Paths}
-
 import org.apache.commons.io.FileUtils
-
 import util.Try
 
 object Utility {
@@ -29,7 +27,6 @@ object Utility {
     val list=getListOfFiles(fromFolder)
     FileUtils.copyFile(new File(list(0)), new File(to));
     //Try(new File(list(0)).renameTo(new File(to))).getOrElse(false)
-
   }
 
 }

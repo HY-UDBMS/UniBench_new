@@ -19,7 +19,7 @@ public class Executor {
 	}
 	
 	public static void main(String[] args) {
-        System.out.println("This is a benchmark for multi-model database, Version 0.1\n" +
+        System.out.println("This is a benchmark for multi-model database, Version 0.2\n" +
                 "by UDBMS group of University of Helsinki, Zhang Chao (chao.z.zhang@helsinki.fi), have fun!");
         System.out.println();
        
@@ -46,35 +46,32 @@ public class Executor {
                 List<String> P1;
         		try {
         			Path currentDir = Paths.get(".");
-        			P1 = Files.readAllLines(Paths.get(currentDir.toAbsolutePath()+"/Unibench/PersonIds"));
+        			P1 = Files.readAllLines(Paths.get("PersonIds"));
         			String personId = randomChoice(P1.toArray(new String[0]));
         			db.Q1(personId);
         		} catch (Exception e) {
         			e.printStackTrace();
         		}
-        		break;
         	case "Q2":
                 List<String> P2;
         		try {
         			Path currentDir = Paths.get(".");
-        			P2 = Files.readAllLines(Paths.get(currentDir.toAbsolutePath()+"/Unibench/ProductIds"));
+        			P2 = Files.readAllLines(Paths.get("ProductIds"));
         			String productId = randomChoice(P2.toArray(new String[0]));
         			db.Q2(productId);
         		} catch (Exception e) {
         			e.printStackTrace();
         		}
-        		break;
         	case "Q3":
                 List<String> P3;
         		try {
         			Path currentDir = Paths.get(".");
-        			P3 = Files.readAllLines(Paths.get(currentDir.toAbsolutePath()+"/Unibench/ProductIds"));
+        			P3 = Files.readAllLines(Paths.get("ProductIds"));
         			String productId = randomChoice(P3.toArray(new String[0]));
         			db.Q3(productId);
         		} catch (Exception e) {
         			e.printStackTrace();
         		}
-			break;
         	case "Q4":
                 List<String> P4;
         		try {
@@ -82,58 +79,52 @@ public class Executor {
         		} catch (Exception e) {
         			e.printStackTrace();
         		}
-			break;
         	case "Q5":
                 List<String> P5_1;
                 List<String> P5_2;
         		try {
         			Path currentDir = Paths.get(".");
-        			P5_1 = Files.readAllLines(Paths.get(currentDir.toAbsolutePath()+"/Unibench/PersonIds"));
-        			P5_2 = Files.readAllLines(Paths.get(currentDir.toAbsolutePath()+"/Unibench/Brands"));
+        			P5_1 = Files.readAllLines(Paths.get("PersonIds"));
+        			P5_2 = Files.readAllLines(Paths.get("Brands"));
         			String personId = randomChoice(P5_1.toArray(new String[0]));
         			String brand = randomChoice(P5_2.toArray(new String[0]));
         			db.Q5(personId,brand);
         		} catch (Exception e) {
         			e.printStackTrace();
-        		}	
-			break;
+        		}
         	case "Q6":
                 List<String> P6;
         		try {
         			Path currentDir = Paths.get(".");
-        			P6 = Files.readAllLines(Paths.get(currentDir.toAbsolutePath()+"/Unibench/PersonIds"));
+        			P6 = Files.readAllLines(Paths.get("PersonIds"));
         			String src = randomChoice(P6.toArray(new String[0]));
         			String dst = randomChoice(P6.toArray(new String[0]));
         			db.Q6(src, dst);
         		} catch (Exception e) {
         			e.printStackTrace();
-        		}	
-			break;
+        		}
         	case "Q7":
                 List<String> P7;
         		try {
         			Path currentDir = Paths.get(".");
-        			P7 = Files.readAllLines(Paths.get(currentDir.toAbsolutePath()+"/Unibench/Brands"));
+        			P7 = Files.readAllLines(Paths.get("Brands"));
         			String brand = randomChoice(P7.toArray(new String[0]));
         			db.Q7(brand);
         		} catch (Exception e) {
         			e.printStackTrace();
-        		}	
-			break;
+        		}
         	case "Q8":
         		try {
         			db.Q8();
         		} catch (Exception e) {
         			e.printStackTrace();
-        		}	
-			break;
+        		}
         	case "Q9":
         		try {
         			db.Q9();
         		} catch (Exception e) {
         			e.printStackTrace();
-        		}	
-			break;
+        		}
         	case "Q10":
         		try {
         			db.Q10();
