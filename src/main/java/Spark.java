@@ -25,7 +25,6 @@ import org.apache.spark.sql.functions.desc
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.functions.array*/
 
-
  //Querys Q1,Q5, and Q8 are available now
 public class Spark extends MMDB {
 	Object Connection(){
@@ -79,5 +78,15 @@ public class Spark extends MMDB {
     
     void Q9() { System.out.println("Not yet"); }
     
-    void Q10() { System.out.println("Not yet"); } 
+    void Q10() { System.out.println("Not yet"); }
+
+    void Q11() {}
+
+    void Q12() {}
+
+    void Q13() {}
+
+    void Q14() {}
+
+    void Q15() {}
 }

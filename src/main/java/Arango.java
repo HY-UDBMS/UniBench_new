@@ -178,5 +178,10 @@ public class Arango extends MMDB {
 			ArangoCursor<String> cursor10 = Conn.db("_system").query(AQ10,String.class);
 		    long millisEnd10 = System.currentTimeMillis();
 		    System.out.println("Query 10 took "+(millisEnd10 - millisStart10) + " ms");
-	    } 
+	    }
+	void Q11() {}
+	void Q12() {}
+	void Q13() {}
+	void Q14() {}
+	void Q15() {}
 }

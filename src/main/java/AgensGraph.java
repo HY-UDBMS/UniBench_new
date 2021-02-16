@@ -233,5 +233,10 @@ public class AgensGraph extends MMDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    } 
+    }
+	void Q11() {}
+	void Q12() {}
+	void Q13() {}
+	void Q14() {}
+	void Q15() {}
 }

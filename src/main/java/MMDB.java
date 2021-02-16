@@ -64,5 +64,42 @@ public abstract class MMDB {
      * their RFM (Recency, Frequency, Monetary) value in the same period, and return their recent reviews and tags 
      * of interest.
      * */
-    abstract void Q10(); 
+    abstract void Q10();
+
+    /*
+     * Q11 (Relational+RDF)
+     * For all the products, find all the related resources, predicates,
+     * and objects in the RDF graph. The predicate contains a prefix of "http://dbpedia.org/property/"
+     * */
+    abstract void Q11();
+
+    /*
+     * Query 12 (Relational+JSON+RDF)
+     * For all the related resources with a type property in the RDF graph,
+     * return all the related orders with a given date
+     * */
+    abstract void Q12();
+
+    /*
+     * Query 13 (Relation+RDF+Property Graph)
+     * Given a brand, return all the products in the table,
+     * all the related resources, predicates, and objects in the RDF graph,
+     * and all the related posts in the property graph.
+     * */
+    abstract void Q13();
+
+    /*
+     * Query 14. (Aggregation1) (Relation+RDF+JSON)
+     * Given a brand, return TOP-20 products in the product table that have the largest number of the related resources in the RDF graph,
+     * then count and sort the related orders for each person with a given date.
+     * */
+    abstract void Q14();
+
+    /*
+     * Query 15. (Aggregation2) (Relation+RDF+Property Graph)
+     * Given a brand, return TOP-20 products in the table that have the largest number of the related resources in the RDF graph,
+     * then count  and sort the related posts for each tag of product in the property graph.
+     *
+     * */
+    abstract void Q15();
 }
