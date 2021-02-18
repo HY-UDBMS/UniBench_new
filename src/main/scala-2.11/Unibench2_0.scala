@@ -245,7 +245,7 @@ object Unibench2_0 {
       rootLogger.setLevel(Level.INFO)
     }
     spark.conf.set("scale_factor", params.getProperty("scale_factor", "1"))
-    spark.conf.set("feedback_factor", params.getProperty("feedback_factor", "1"))
+    //spark.conf.set("feedback_factor", params.getProperty("feedback_factor", "1"))
     spark.conf.set("rdf_factor", params.getProperty("rdf_factor", "0"))
     spark.conf.set("interest_table", "Unibench/Graph_SocialNetwork/PersonHasInterest/part-*.csv")
     spark.conf.set("Person_knows_Person", "Unibench/Graph_SocialNetwork/part-*.csv")

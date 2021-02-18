@@ -15,6 +15,7 @@ object SocialNetwork {
 
   def graphGen(spark: SparkSession): Unit = {
     val scale_factor = spark.conf.get("scale_factor").toString
+    println("The scale factor is " +scale_factor)
     val xml = XML.loadFile("scale_factors.xml")
     val params = xml \\ "_" filter attributeValueEquals(scale_factor)
     val person_size=(params \ "numPersons" text).toInt

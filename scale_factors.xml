@@ -8,4 +8,20 @@
         <BirthStartDate>1970</BirthStartDate>
         <PostStartDate>2010</PostStartDate>
     </scale_factor>
+    <scale_factor name="3" >
+        <numPersons>27000</numPersons>
+        <startYear>2018</startYear>
+        <FriendSize>563433</FriendSize>
+        <InterestSize>2081754</InterestSize>
+        <BirthStartDate>1970</BirthStartDate>
+        <PostStartDate>2010</PostStartDate>
+    </scale_factor>
+    <scale_factor name="10" >
+        <numPersons>73000</numPersons>
+        <startYear>2018</startYear>
+        <FriendSize>1878110</FriendSize>
+        <InterestSize>6939180</InterestSize>
+        <BirthStartDate>1970</BirthStartDate>
+        <PostStartDate>2010</PostStartDate>
+    </scale_factor>
 </scale_factors>
