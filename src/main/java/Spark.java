@@ -84,7 +84,7 @@ public class Spark extends MMDB {
 
     void Q12() {}
 
-    void Q13() {}
+    void Q13(String BrandId) {}
 
     void Q14() {}
 

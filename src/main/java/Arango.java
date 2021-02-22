@@ -179,9 +179,104 @@ public class Arango extends MMDB {
 		    long millisEnd10 = System.currentTimeMillis();
 		    System.out.println("Query 10 took "+(millisEnd10 - millisStart10) + " ms");
 	    }
-	void Q11() {}
-	void Q12() {}
-	void Q13() {}
-	void Q14() {}
-	void Q15() {}
+	void Q11() {
+			String AQ11="LET property=\"http://dbpedia.org/property/\" " +
+					"FOR pro1 IN RDF_Product_nodes" +
+					"    FOR pro2 IN Product" +
+					"    Filter pro1._key==pro2.title" +
+					"        FOR r,t  IN 1..1 any pro1 RDF_Product_edges" +
+					"        FILTER CONTAINS(t.predicate, property)" +
+					"    Return {resource:r,triple:t}";
+		ArangoDB Conn=(ArangoDB)this.Connection();
+		long millisStart11 = System.currentTimeMillis();
+		ArangoCursor<String> cursor11 = Conn.db("_system").query(AQ11,String.class);
+		long millisEnd11 = System.currentTimeMillis();
+		System.out.println("Query 11 took "+(millisEnd11 - millisStart11) + " ms");
+	}
+	void Q12() {
+			String AQ12="LET property=\"http://dbpedia.org/property/type\"" +
+					"FOR pro1 IN RDF_Product_nodes" +
+					"    FOR pro2 IN Product" +
+					"    Filter pro1._key==pro2.title" +
+					"        FOR r,t IN 1..1 any pro1 RDF_Product_edges" +
+					"        FILTER t.predicate==property" +
+					"            FOR o IN Order" +
+					"            FILTER o.OrderDate >\"2021\"  and pro2._key in o.Orderline[*].productId" +
+					"    Return {product:pro2,resources:r,order:o}";
+		ArangoDB Conn=(ArangoDB)this.Connection();
+		long millisStart12 = System.currentTimeMillis();
+		ArangoCursor<String> cursor12 = Conn.db("_system").query(AQ12,String.class);
+		long millisEnd12 = System.currentTimeMillis();
+		System.out.println("Query 12 took "+(millisEnd12 - millisStart12) + " ms");
+	}
+
+	void Q13(String BrandId) {
+			String AQ13="Let BrandId=@BrandId" +
+					"FOR pro1 IN RDF_Product_nodes" +
+					"    FOR pro2 IN Product" +
+					"     FOR tag in Tag" +
+					"     Filter pro2.brand==BrandId and pro1._key==pro2.title and pro2._key==tag._key" +
+					"        FOR r,t IN 1..1 any pro1 RDF_Product_edges" +
+					"            FOR p IN 1..1 any tag PostHasTag" +
+					"    Return {product:pro2,resource:r,triple:t,tag,post:p}";
+		ArangoDB Conn=(ArangoDB)this.Connection();
+		long millisStart13 = System.currentTimeMillis();
+		Map<String, Object> bindVars13 = new MapBuilder()
+				.put("BrandId", BrandId)
+				.get();
+		ArangoCursor<String> cursor13 = Conn.db("_system").query(AQ13,bindVars13,String.class);
+		long millisEnd13 = System.currentTimeMillis();
+		System.out.println("Query 13 took "+(millisEnd13 - millisStart13) + " ms");
+	}
+
+	void Q14() {
+			String AQ14="LET RelatedResource= (FOR pro1 IN RDF_Product_nodes" +
+					"                          FOR pro2 IN Product" +
+					"                          Filter pro1._key==pro2.title" +
+					"                          Return {pro1,pro2})" +
+					"LET TOPK=(" +
+					"        FOR pro1 in RelatedResource[*].pro1" +
+					"        FOR r,t IN 1..1 Outbound pro1 RDF_Product_edges" +
+					"            Collect group1=t._from with count into cnt Sort cnt desc" +
+					"            Limit 20" +
+					"    Return {group1,cnt})" +
+					"For subject in TOPK[*].group1" +
+					"FOR pro1 IN RDF_Product_nodes" +
+					"For product in RelatedResource[*].pro2" +
+					"Filter subject==pro1._id and pro1._key==product.title" +
+					"FOR o IN Order" +
+					"FILTER o.OrderDate >\"2021\" and product._key in o.Orderline[*].productId" +
+					"Collect group2=o.PersonId with count into cnt Sort cnt desc" +
+					"Return {group2,cnt}";
+		ArangoDB Conn=(ArangoDB)this.Connection();
+		long millisStart14= System.currentTimeMillis();
+		ArangoCursor<String> cursor14 = Conn.db("_system").query(AQ14,String.class);
+		long millisEnd14 = System.currentTimeMillis();
+		System.out.println("Query 14 took "+(millisEnd14 - millisStart14) + " ms");
+	}
+
+	void Q15() {
+			String AQ15="LET RelatedResource= (FOR pro1 IN RDF_Product_nodes" +
+					"                          FOR pro2 IN Product" +
+					"                          Filter pro1._key==pro2.title" +
+					"                          Return {pro1,pro2})" +
+					"LET TOPK=(" +
+					"        FOR pro1 in RelatedResource[*].pro1" +
+					"        FOR r,t IN 1..1 Outbound pro1 RDF_Product_edges" +
+					"            Collect group1=t._from with count into cnt Sort cnt desc\n" +
+					"            Limit 20" +
+					"    Return {group1,cnt})" +
+					"For subject in TOPK[*].group1" +
+					"FOR pro1 IN RDF_Product_nodes" +
+					"For product in RelatedResource[*].pro2" +
+					"Filter subject==pro1._id and pro1._key==product.title" +
+					"FOR p,e IN 1..1 Inbound Concat(\"Tag/\", product._key) PostHasTag" +
+					"Collect group2=e._to with count into cnt Sort cnt desc" +
+					"Return {group2,cnt}";
+		ArangoDB Conn=(ArangoDB)this.Connection();
+		long millisStart15 = System.currentTimeMillis();
+		ArangoCursor<String> cursor15 = Conn.db("_system").query(AQ15,String.class);
+		long millisEnd15 = System.currentTimeMillis();
+		System.out.println("Query 15 took "+(millisEnd15 - millisStart15) + " ms");
+	}
 }

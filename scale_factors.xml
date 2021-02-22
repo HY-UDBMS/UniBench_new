@@ -24,4 +24,12 @@
         <BirthStartDate>1970</BirthStartDate>
         <PostStartDate>2010</PostStartDate>
     </scale_factor>
+    <scale_factor name="30" >
+        <numPersons>182000</numPersons>
+        <startYear>2018</startYear>
+        <FriendSize>5634330</FriendSize>
+        <InterestSize>20817540</InterestSize>
+        <BirthStartDate>1970</BirthStartDate>
+        <PostStartDate>2010</PostStartDate>
+    </scale_factor>
 </scale_factors>

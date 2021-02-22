@@ -130,7 +130,39 @@ public class Executor {
         			db.Q10();
         		} catch (Exception e) {
         			e.printStackTrace();
-        		}	
+        		}
+			case "Q11":
+				try {
+					db.Q11();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			case "Q12":
+				try {
+					db.Q12();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			case "Q13":
+				try {
+					List<String> P13= Files.readAllLines(Paths.get("BrandIds"));
+					String BrandId = randomChoice(P13.toArray(new String[0]));
+					db.Q13(BrandId);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			case "Q14":
+				try {
+					db.Q14();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			case "Q15":
+				try {
+					db.Q15();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			break;       		
       }
 	}

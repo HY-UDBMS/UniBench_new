@@ -232,10 +232,8 @@ object Unibench2_0 {
       .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer") //required by SANSA
       .config("spark.io.compression.codec", "snappy")
       .getOrCreate()
-    spark.conf.set("spark.executor.memory","8g")
-    spark.conf.set("spark.executor.cores", "3")
-    spark.conf.set("spark.cores.max", "3")
-    spark.conf.set("spark.driver.memory","8g")
+    spark.conf.set("spark.executor.memory","16g")
+    spark.conf.set("spark.driver.memory","16g")
 
     { // get rid of DEBUG logs
       import ch.qos.logback.classic.{Level, Logger}
@@ -271,7 +269,7 @@ object Unibench2_0 {
     // Tag
     Utility.Copy("src/main/resources/","Unibench/Graph_SocialNetwork/Tag/tag.csv")
 
-    //RDFSimplified.Create(spark)
+    RDFSimplified.Create(spark)
 
     // Rename the generated files
     Utility.reName("Unibench/CSV_Customer/","Unibench/CSV_Customer/person.csv")

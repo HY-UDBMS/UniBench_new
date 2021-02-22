@@ -86,7 +86,7 @@ public abstract class MMDB {
      * all the related resources, predicates, and objects in the RDF graph,
      * and all the related posts in the property graph.
      * */
-    abstract void Q13();
+    abstract void Q13(String BrandId);
 
     /*
      * Query 14. (Aggregation1) (Relation+RDF+JSON)

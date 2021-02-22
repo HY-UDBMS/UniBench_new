@@ -236,7 +236,7 @@ public class AgensGraph extends MMDB {
     }
 	void Q11() {}
 	void Q12() {}
-	void Q13() {}
+	void Q13(String BrandId) {}
 	void Q14() {}
 	void Q15() {}
 }
