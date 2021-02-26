@@ -9,43 +9,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79eb6df0-ea5f-4cc4-886c-5d43d4a0bd91" name="Default Changelist" comment="Add Q&#10;&#10;Update the scale factor configuration">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_orientechnologies_orientdb_core_2_2_35_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_orientechnologies_orientdb_graphdb_2_2_35_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_orientechnologies_orientdb_jdbc_2_2_35_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_sun_xml_bind_jaxb_impl_2_2_3_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_tinkerpop_blueprints_blueprints_core_2_6_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__net_java_dev_jna_jna_platform_4_5_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_codehaus_jettison_jettison_1_3_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_ow2_asm_asm_analysis_7_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_ow2_asm_asm_commons_7_0_jar.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/RDF_product_edges.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/RDF_product_nodes.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/RDF_Importer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_github_jnr_jffi_1_2_19_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_github_jnr_jffi_1_2_19_native_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_github_jnr_jnr_a64asm_1_0_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_github_jnr_jnr_constants_0_9_12_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_github_jnr_jnr_ffi_2_1_10_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_github_jnr_jnr_posix_3_0_50_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_github_jnr_jnr_x86asm_1_0_2_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_ibm_icu_icu4j_65_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__javax_mail_mail_1_4_7_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_orientechnologies_orientdb_client_3_1_5_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_orientechnologies_orientdb_client_2_2_35_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_orientechnologies_orientdb_core_3_1_5_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_orientechnologies_orientdb_jdbc_3_1_5_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_orientechnologies_orientdb_server_3_1_5_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_orientechnologies_orientdb_server_2_2_35_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_orientechnologies_orientdb_tools_3_1_5_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_orientechnologies_orientdb_tools_2_2_35_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_sun_xml_bind_jaxb_core_2_3_0_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_sun_xml_bind_jaxb_impl_2_3_0_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_codehaus_jettison_jettison_1_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_ow2_asm_asm_7_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_ow2_asm_asm_7_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_ow2_asm_asm_analysis_7_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_ow2_asm_asm_commons_7_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_ow2_asm_asm_tree_7_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__net_java_dev_jna_jna_4_5_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_ow2_asm_asm_util_7_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_ow2_asm_asm_tree_7_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/test-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/test-build.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/RDFSimplified$$anonfun$Create$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/RDFSimplified$$anonfun$Create$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/RDFSimplified$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/RDFSimplified$.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.11/classes/SocialNetwork$$anonfun$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/SocialNetwork$$anonfun$1.class" afterDir="false" />
@@ -338,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613986913400</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Add Q&#10;&#10;Update the scale factor configuration">
+      <created>1614343054871</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1614343054871</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -394,9 +368,9 @@
     <MESSAGE value="Remove the feedback" />
     <MESSAGE value="Add the random knows graph and benchmarking interfaces" />
     <MESSAGE value="Add Q&#10;&#10;Add query interfaces" />
-    <MESSAGE value="Add Q&#10;&#10;Update the scale factor configuration" />
     <MESSAGE value="Add the ArangoDB implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add the ArangoDB implementation" />
+    <MESSAGE value="Add Q&#10;&#10;Update the scale factor configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Q&#10;&#10;Update the scale factor configuration" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="267" key="#Notifications" timestamp="1610980664901">
@@ -422,14 +396,15 @@
       <screen x="0" y="23" width="1440" height="827" />
     </state>
     <state x="533" y="148" key="#com.intellij.ide.util.MemberChooser/0.23.1440.827@0.23.1440.827" timestamp="1613486676109" />
-    <state x="0" y="23" width="1440" height="831" key="CommitChangelistDialog2" timestamp="1613986754781">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state x="0" y="23" width="1440" height="832" key="CommitChangelistDialog2" timestamp="1614343053275">
+      <screen x="0" y="23" width="1440" height="832" />
     </state>
     <state x="0" y="23" width="1440" height="831" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1613634187500" />
     <state x="165" y="23" key="CommitChangelistDialog2/0.23.1440.822@0.23.1440.822" timestamp="1610008556914" />
     <state x="165" y="23" key="CommitChangelistDialog2/0.23.1440.823@0.23.1440.823" timestamp="1610009125117" />
     <state x="0" y="23" width="1440" height="827" key="CommitChangelistDialog2/0.23.1440.827@0.23.1440.827" timestamp="1613486946656" />
     <state x="0" y="23" key="CommitChangelistDialog2/0.23.1440.828@0.23.1440.828" timestamp="1613986754781" />
+    <state x="0" y="23" width="1440" height="832" key="CommitChangelistDialog2/0.23.1440.832@0.23.1440.832" timestamp="1614343053275" />
     <state x="100" y="109" width="1240" height="617" key="DiffContextDialog" timestamp="1610977362629">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -499,14 +474,15 @@
     <state x="358" y="218" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1610976639807" />
     <state x="358" y="223" key="MultipleFileMergeDialog/0.23.1440.827@0.23.1440.827" timestamp="1610982709820" />
     <state x="358" y="223" key="MultipleFileMergeDialog/0.23.1440.828@0.23.1440.828" timestamp="1613986989594" />
-    <state x="0" y="23" width="1440" height="831" key="Vcs.Push.Dialog.v2" timestamp="1613987139826">
-      <screen x="0" y="23" width="1440" height="828" />
+    <state x="0" y="23" width="1440" height="832" key="Vcs.Push.Dialog.v2" timestamp="1614343064960">
+      <screen x="0" y="23" width="1440" height="832" />
     </state>
     <state x="0" y="23" width="1440" height="831" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1613634161631" />
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.822@0.23.1440.822" timestamp="1610008107594" />
     <state x="320" y="170" key="Vcs.Push.Dialog.v2/0.23.1440.823@0.23.1440.823" timestamp="1610009209595" />
     <state x="0" y="23" width="1440" height="827" key="Vcs.Push.Dialog.v2/0.23.1440.827@0.23.1440.827" timestamp="1613486957734" />
     <state x="0" y="23" key="Vcs.Push.Dialog.v2/0.23.1440.828@0.23.1440.828" timestamp="1613987139826" />
+    <state x="0" y="23" width="1440" height="832" key="Vcs.Push.Dialog.v2/0.23.1440.832@0.23.1440.832" timestamp="1614343064960" />
     <state x="100" y="109" width="1240" height="674" maximized="true" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1610978388161">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
