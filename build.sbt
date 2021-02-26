@@ -58,6 +58,6 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= Seq(
   "com.arangodb" % "arangodb-java-driver" % "6.7.4",
-  "com.orientechnologies" % "orientdb-jdbc" % "3.1.5",
+  "com.orientechnologies" % "orientdb-jdbc" % "2.2.35",
   "net.bitnine" % "agensgraph-jdbc" % "1.4.2",
 )
